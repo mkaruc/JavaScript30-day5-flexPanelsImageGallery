@@ -1,11 +1,14 @@
 const panels=document.querySelectorAll(".panel");
 function opening() {
-    this.classList.toggle("open");
+    this.classList.toggle('open');
 }
-function actived() {
-    this.classList.toggle("open-active");
+function actived(e) {
+    if(e.propertyName.includes("flex")){
+        console.log("hello")
+        this.classList.toggle('open-active');
+    }
+    
 }
-panels.forEach(element => {
-    element.addEventListener('click',opening);
-    element.addEventListener('transitioned',actived);
-});
+panels.forEach(element => element.addEventListener('click',opening));
+panels.forEach(element =>element.addEventListener('transitionend',actived));
+;
